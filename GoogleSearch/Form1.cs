@@ -9,6 +9,9 @@ using DevExpress.Skins;
 using DevExpress.LookAndFeel;
 using DevExpress.UserSkins;
 using DevExpress.XtraEditors;
+using GoogleSearch;
+using GoogleSearchAPI;
+using GoogleSearchAPI.Query;
 
 
 namespace WindowsApplication1
@@ -18,6 +21,16 @@ namespace WindowsApplication1
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void bbRun_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            WebQuery query = new WebQuery("Магазин цветов Пятигорск");
+            query.StartIndex.Value = 1;
+            query.HostLangauge.Value = "Russain";
+
+            IGoogleResultSet<GoogleWebResult> resultSet = GoogleService.Instance.Search<GoogleWebResult>(query);
+            int i = 0;
         }
     }
 }

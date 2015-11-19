@@ -19,7 +19,7 @@ namespace WindowsApplication1
             DevExpress.Skins.SkinManager.EnableFormSkins();
             DevExpress.UserSkins.OfficeSkins.Register();
             DevExpress.UserSkins.BonusSkins.Register();
-            UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
+            UserLookAndFeel.Default.SetSkinStyle("Lilian");
 
             Application.Run(new Form1());
         }
