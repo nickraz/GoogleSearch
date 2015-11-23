@@ -40,8 +40,10 @@ namespace WindowsApplication1
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.splitContainerControl1 = new DevExpress.XtraEditors.SplitContainerControl();
-            this.richEditControl1 = new DevExpress.XtraRichEdit.RichEditControl();
-            this.richEditControl2 = new DevExpress.XtraRichEdit.RichEditControl();
+            this.recQueries = new DevExpress.XtraRichEdit.RichEditControl();
+            this.recAnswers = new DevExpress.XtraRichEdit.RichEditControl();
+            this.rpgLinks = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbLinks = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckedComboBoxEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerControl1)).BeginInit();
@@ -60,16 +62,17 @@ namespace WindowsApplication1
             this.ribbonControl1.ExpandCollapseItem,
             this.barEditItem1,
             this.bbRun,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.bbLinks});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 4;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpRun,
             this.ribbonPage1});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckedComboBoxEdit1});
-            this.ribbonControl1.SelectedPage = this.rpRun;
+            this.ribbonControl1.SelectedPage = this.ribbonPage1;
             this.ribbonControl1.Size = new System.Drawing.Size(950, 143);
             // 
             // barEditItem1
@@ -102,6 +105,7 @@ namespace WindowsApplication1
             this.barButtonItem2.Id = 3;
             this.barButtonItem2.Name = "barButtonItem2";
             this.barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.barButtonItem2.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem2_ItemClick);
             // 
             // rpRun
             // 
@@ -120,7 +124,8 @@ namespace WindowsApplication1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup3});
+            this.ribbonPageGroup3,
+            this.rpgLinks});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Настройки поиска";
             // 
@@ -141,34 +146,49 @@ namespace WindowsApplication1
             this.splitContainerControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainerControl1.Location = new System.Drawing.Point(0, 143);
             this.splitContainerControl1.Name = "splitContainerControl1";
-            this.splitContainerControl1.Panel1.Controls.Add(this.richEditControl1);
+            this.splitContainerControl1.Panel1.Controls.Add(this.recQueries);
             this.splitContainerControl1.Panel1.Text = "Panel1";
-            this.splitContainerControl1.Panel2.Controls.Add(this.richEditControl2);
+            this.splitContainerControl1.Panel2.Controls.Add(this.recAnswers);
             this.splitContainerControl1.Panel2.Text = "Panel2";
             this.splitContainerControl1.Size = new System.Drawing.Size(950, 407);
             this.splitContainerControl1.SplitterPosition = 438;
             this.splitContainerControl1.TabIndex = 1;
             this.splitContainerControl1.Text = "splitContainerControl1";
             // 
-            // richEditControl1
+            // recQueries
             // 
-            this.richEditControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richEditControl1.Location = new System.Drawing.Point(0, 0);
-            this.richEditControl1.MenuManager = this.ribbonControl1;
-            this.richEditControl1.Name = "richEditControl1";
-            this.richEditControl1.Size = new System.Drawing.Size(438, 407);
-            this.richEditControl1.TabIndex = 0;
-            this.richEditControl1.Text = "Список вопросов:";
+            this.recQueries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recQueries.Location = new System.Drawing.Point(0, 0);
+            this.recQueries.MenuManager = this.ribbonControl1;
+            this.recQueries.Name = "recQueries";
+            this.recQueries.Size = new System.Drawing.Size(438, 407);
+            this.recQueries.TabIndex = 0;
+            this.recQueries.Text = "Список вопросов:";
             // 
-            // richEditControl2
+            // recAnswers
             // 
-            this.richEditControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richEditControl2.Location = new System.Drawing.Point(0, 0);
-            this.richEditControl2.MenuManager = this.ribbonControl1;
-            this.richEditControl2.Name = "richEditControl2";
-            this.richEditControl2.Size = new System.Drawing.Size(507, 407);
-            this.richEditControl2.TabIndex = 0;
-            this.richEditControl2.Text = "Найденные ответы:";
+            this.recAnswers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.recAnswers.Location = new System.Drawing.Point(0, 0);
+            this.recAnswers.MenuManager = this.ribbonControl1;
+            this.recAnswers.Name = "recAnswers";
+            this.recAnswers.Size = new System.Drawing.Size(507, 407);
+            this.recAnswers.TabIndex = 0;
+            this.recAnswers.Text = "Найденные ответы:";
+            // 
+            // rpgLinks
+            // 
+            this.rpgLinks.ItemLinks.Add(this.bbLinks);
+            this.rpgLinks.Name = "rpgLinks";
+            this.rpgLinks.Text = "Таблица ссылок";
+            // 
+            // bbLinks
+            // 
+            this.bbLinks.Caption = "Таблица ссылок";
+            this.bbLinks.Glyph = ((System.Drawing.Image)(resources.GetObject("bbLinks.Glyph")));
+            this.bbLinks.Id = 4;
+            this.bbLinks.Name = "bbLinks";
+            this.bbLinks.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.bbLinks.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbLinks_ItemClick);
             // 
             // Form1
             // 
@@ -199,10 +219,12 @@ namespace WindowsApplication1
         private DevExpress.XtraBars.Ribbon.RibbonPage rpRun;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
         private DevExpress.XtraEditors.SplitContainerControl splitContainerControl1;
-        private DevExpress.XtraRichEdit.RichEditControl richEditControl1;
-        private DevExpress.XtraRichEdit.RichEditControl richEditControl2;
+        private DevExpress.XtraRichEdit.RichEditControl recQueries;
+        private DevExpress.XtraRichEdit.RichEditControl recAnswers;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.BarButtonItem bbLinks;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgLinks;
 
 
     }
